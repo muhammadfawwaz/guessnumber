@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Number Game</title>
+    {{ css('https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css') }}
+</head>
+<body>
+    <form action="/" method="POST">
+        {{ csrfField() }}
+        <div class="form-group">
+            <label>Number</label>
+            <input type="number" class="form-control" placeholder="Choose number from 0-10" name="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <hr>
+    @if(old('notification') == 'Your number is right')
+        <div class="alert alert-success">{{ old('notification') }}</div>
+    @endif
+    @if(old('notification') == 'False. The right number is ' + old('random') || old('notification') === 'Fill the number')
+        <div class="alert alert-danger">{{ old('notification') }}</div>
+    @endif
+</body>
+</html>
